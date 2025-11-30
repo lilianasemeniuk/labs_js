@@ -1,0 +1,56 @@
+
+function sum() {
+
+    let arr = [];
+    for (let i = 0; i < arguments.length; i++) {
+        arr[i] = arguments[i];
+    }
+
+    // 1. Цикл for
+    let sum1 = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum1 = sum1 + arr[i];
+    }
+
+    // 2. Цикл for...of
+    let sum2 = 0;
+    for (let num of arr) {
+        sum2 = sum2 + num;
+    }
+
+    // 3. Цикл while
+    let sum3 = 0;
+    let i = 0;
+    while (i < arr.length) {
+        sum3 = sum3 + arr[i];
+        i = i + 1;
+    }
+
+    // 4. Цикл do...while
+    let sum4 = 0;
+    let j = 0;
+    do {
+        sum4 = sum4 + arr[j];
+        j = j + 1;
+    } while (j < arr.length);
+
+    // 5. Метод reduce
+    let sum5 = arr.reduce(function (a, b) {
+        return a + b;
+    }, 0);
+
+    // Результати
+    console.log("Результати функції sum:");
+    console.log("1) for          =", sum1);
+    console.log("2) for...of     =", sum2);
+    console.log("3) while        =", sum3);
+    console.log("4) do...while   =", sum4);
+    console.log("5) reduce       =", sum5);
+    console.log("----------------------------");
+}
+
+
+console.log("=== Мої приклади ===");
+sum(5, 10, 15);
+sum(100, 200, 300, 400);
+sum(-7, 15, -3);
