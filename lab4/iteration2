@@ -1,0 +1,19 @@
+let matrix = [
+    [34, 12, 87],
+    [56, 99, 23],
+    [41, 78, 65]
+];
+
+let max = matrix[0][0];
+
+for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] > max) {
+            max = matrix[i][j];
+        }
+    }
+}
+
+console.log("Двомірний масив:");
+console.log(matrix);
+console.log("Найбільший елемент =", max);
