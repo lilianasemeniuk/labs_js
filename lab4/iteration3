@@ -1,0 +1,19 @@
+console.log("\nТривалість життя відомих людей");
+
+let persons = {
+    mercury:    { born: 1946, died: 1991 },
+    daVinchi:      { born: 1452, died: 1519 },
+    einstein:   { born: 1879, died: 1955 },
+    hawking: { born: 1942, died: 2018 }
+};
+
+let ages = {};
+
+for (let name in persons) {
+    let years = persons[name].died - persons[name].born;
+    ages[name] = years;
+}
+
+console.log("Результат:");
+console.log(ages);
+
