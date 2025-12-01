@@ -1,0 +1,42 @@
+"use strict";
+
+
+function pipe(...funcs) {
+    funcs.forEach((f, idx) => {
+        if (typeof f !== "function") {
+            throw new TypeError(`Аргумент №${idx + 1} не є функцією!`);
+        }
+    });
+
+    return function(start) {
+        let current = start;
+        let currentIndex = 0;
+
+        try {
+            for (let func of funcs) {
+                current = func(current);
+                currentIndex++;
+            }
+            return current;
+        } catch (error) {
+            const badFuncName = func.name || `анонімна (№${currentIndex})`;
+            console.error(`Помилка в функції "${badFuncName}":`, error.message);
+            throw error; 
+        }
+    };
+}
+
+const safePipe = pipe(
+    x => x + 5,
+    x => x * 3,
+    x => x.toString(),
+    x => x.repeat(2)
+);
+
+console.log(safePipe(10)); 
+
+try {
+    pipe(x => x.split(""), x => x ** 3)(10); 
+} catch (e) {
+    console.log("Помилка");
+}
