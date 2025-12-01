@@ -1,0 +1,16 @@
+"use strict";
+
+function iterate(obj, callback) {
+    for (let key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            callback(key, obj[key], obj);
+        }
+    }
+}
+
+const person = { name: "Іван", age: 20, faculty: "ФІОТ" };
+
+iterate(person, (k, v) => {
+    console.log(`Ключ: ${k} → Значення: ${v}`);
+});
+
