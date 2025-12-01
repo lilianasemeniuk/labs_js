@@ -1,0 +1,20 @@
+"use strict";
+
+const array = [1, 2, 3, 4, 5, 6,7,1,6,99,100];
+
+function removeElements(arr, ...stuff) {
+    let newArr = [];
+    for(let i = 0; i < arr.length; i++) {
+        if(!stuff.includes(arr[i])) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
+console.log(removeElements(array, 5, 1, 6)); 
+
+console.log(removeElements(["Кiт", "Пес", "Кiт", "Хом'як", "Пес"], "Кiт", "Пес"));
+// → ["Хом'як"]
+
+console.log(removeElements([10,20,10,30,40,10], 10));
