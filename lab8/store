@@ -1,0 +1,19 @@
+"use strict";
+
+function store(value) {
+    let secret = value;
+
+    return function get() {
+        return secret;
+    };
+}
+
+const saveNumber = store(42);
+console.log(saveNumber());      
+console.log(saveNumber());       
+
+const saveText = store("Hello World");
+console.log(saveText());        
+
+const saveBool = store(true);
+console.log(saveBool());         
