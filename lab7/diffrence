@@ -1,0 +1,33 @@
+"use strict";
+
+function difference(a, b) {
+    let c = [];                    
+    
+    for (let x of a) {
+        let f = 0;               
+        
+        for (let y of b) {
+            if (x === y) {
+                f = 1;
+                break;
+            }
+        }
+        
+        if (f === 0) {
+            c.push(x);
+        }
+    }
+    
+    return c;
+}
+
+const arr1 = [7, -2, 10, 5, 0, 33, -2, 100];
+const arr2 = [0, 10, 100, 999];
+console.log(difference(arr1, arr2)); 
+
+const cities1 = ["Beijing", "Kyiv", "Tokyo", "Kyiv"];
+const cities2 = ["Kyiv", "London", "Baghdad"];
+console.log(difference(cities1, cities2)); 
+
+
+console.log(difference([], [1,2,3])); // → []
