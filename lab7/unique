@@ -1,0 +1,28 @@
+"use strict";
+
+function unique(a) {
+    let b = [];                    
+    
+    for (let x of a) {
+        let f = false;             
+        
+        for (let y of b) {
+            if (x === y) {
+                f = true;
+                break;            
+            }
+        }
+        
+        if (!f) b.push(x);         
+    }
+    
+    return b;
+}
+
+console.log(unique([5,5,2,2,8,1,1,9]));       
+
+console.log(unique(["a","b","c","a","b","c"])); 
+
+console.log(unique([true, false, true, true])); 
+
+console.log(unique([]));                       
