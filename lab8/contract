@@ -1,0 +1,33 @@
+"use strict";
+
+function contract(fn, ...types) {
+    const expectedReturnType = types.pop(); 
+    return function(...args) {
+      
+        args.forEach((arg, index) => {
+            const expectedType = types[index];
+            if (expectedType && typeof arg !== expectedType.name.toLowerCase()) {
+                throw new TypeError(`Аргумент ${index + 1} має бути ${expectedType.name}`);
+            }
+        });
+
+        const result = fn(...args);
+
+        if (typeof result !== expectedReturnType.name.toLowerCase()) {
+            throw new TypeError(`Функція має повернути ${expectedReturnType.name}, а повернула ${typeof result}`);
+        }
+
+        return result;
+    };
+}
+
+const add = (x, y) => x + y;
+const addNumbers = contract(add, Number, Number, Number);
+console.log(addNumbers(15, 27));    
+
+
+const join = (a, b) => a + " " + b;
+const joinStrings = contract(join, String, String, String);
+console.log(joinStrings("Доброго", "вечора"));   
+
+// joinStrings("Привіт", 100); // помилка!
